@@ -148,6 +148,6 @@ I would like to thank Microverse for this great opportunity!
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](https://github.com/Akorede3133/bookstore/blob/dev/LICENSE) licensed.
+This project is [MIT](https://github.com/Akorede3133/bookstore/blob/feature/setup-components/LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
