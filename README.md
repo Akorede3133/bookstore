@@ -33,27 +33,6 @@
 ### Tech Stack <a name="tech-stack"></a>
 
 <details>
-  <summary>HTML5</summary>
-  <ul>
-    <li><a href="https://html.com/">HTML5</a></li>
-  </ul>
-</details>
-
-<details>
-  <summary>CSS3</summary>
-  <ul>
-    <li><a href="https://www.css3.com/">CSS3</a></li>
-  </ul>
-</details>
-
-<details>
-<summary>Javascript</summary>
-  <ul>
-    <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">Javascript</a></li>
-  </ul>
-</details>
-
-<details>
   <summary>React</summary>
   <ul>
     <li><a href="https://webpack.js.org/guides/getting-started/#basic-setup">Webpack</a></li>
