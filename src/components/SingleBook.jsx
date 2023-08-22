@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SingleBook = () => (
-  <div className=" flex justify-between">
+  <li className=" flex justify-between">
     <div>
       <p>Action</p>
       <h2>The Hunger Games</h2>
@@ -32,7 +32,7 @@ const SingleBook = () => (
         <button type="button">UPDATE PROGRESS</button>
       </div>
     </div>
-  </div>
+  </li>
 );
 
 export default SingleBook;

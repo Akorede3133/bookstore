@@ -1,9 +1,9 @@
 import {
   createBrowserRouter, createRoutesFromElements, RouterProvider, Route,
 } from 'react-router-dom';
-import Books from './components/Books';
+import Books from './pages/Books';
 import Layout from './components/Layout';
-import Categories from './components/Categories';
+import Categories from './pages/Categories';
 
 function App() {
   const router = createBrowserRouter(createRoutesFromElements(
