@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 
-const SingleBook = ({ title, author, id }) => (
+const SingleBook = ({
+  title, author, id, category,
+}) => (
   <li className=" flex justify-between">
     <div>
-      <p>Action</p>
+      <p>{category}</p>
       <h2>{title}</h2>
       <p>{author}</p>
       <ul className=" flex gap-1">
@@ -41,4 +43,5 @@ SingleBook.propTypes = {
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
 };

@@ -9,8 +9,10 @@ const BookList = () => {
       <ul>
         {
           books.books.map((book) => {
-            const { item_id: id, title, author } = book;
-            return <SingleBook key={id} title={title} author={author} />;
+            const {
+              item_id: id, title, author, category,
+            } = book;
+            return <SingleBook key={id} title={title} author={author} category={category} />;
           })
         }
       </ul>
