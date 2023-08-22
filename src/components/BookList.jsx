@@ -4,7 +4,6 @@ import SingleBook from './SingleBook';
 
 const BookList = () => {
   const books = useSelector(selectAllBooks);
-  console.log(books);
   return (
     <div>
       <ul>
