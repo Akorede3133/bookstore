@@ -1,20 +1,20 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
-const SingleBook = () => (
+const SingleBook = ({ title, author, id }) => (
   <li className=" flex justify-between">
     <div>
       <p>Action</p>
-      <h2>The Hunger Games</h2>
-      <p>Suzanne Collins</p>
+      <h2>{title}</h2>
+      <p>{author}</p>
       <ul className=" flex gap-1">
         <li>
-          <button type="button">Comments</button>
+          <button id={id} type="button">Comments</button>
         </li>
         <li>
-          <button type="button">Remove</button>
+          <button id={id} type="button">Remove</button>
         </li>
         <li>
-          <button type="button">Edit</button>
+          <button id={id} type="button">Edit</button>
         </li>
       </ul>
     </div>
@@ -36,3 +36,9 @@ const SingleBook = () => (
 );
 
 export default SingleBook;
+
+SingleBook.propTypes = {
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+};
