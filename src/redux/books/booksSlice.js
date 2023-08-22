@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, nanoid } from '@reduxjs/toolkit';
 
 const initialState = {
   books: [
@@ -31,10 +31,12 @@ const booksSlice = createSlice({
       reducer: (state, action) => {
         state.books.push(action.payload);
       },
-      prepare: (name, author) => ({
+      prepare: (title, author) => ({
         payload: {
-          name,
+          item_id: nanoid(),
+          title,
           author,
+          category: 'fiction',
         },
       }),
     },
