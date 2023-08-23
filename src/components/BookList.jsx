@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectAllBooks, getBookFromServer } from '../redux/books/booksSlice';
@@ -15,14 +14,14 @@ const BookList = () => {
   if (loading) {
     return <div>Loading ...</div>;
   }
-  if (error) {
-    return <div>Error occur</div>;
+  if (!Array.isArray(books) || error) {
+    return <div>An Error occur</div>;
   }
   return (
     <div>
       <ul>
         {
-         books.map((book) => {
+         books?.map((book) => {
            const {
              item_id: id, title, author, category,
            } = book;

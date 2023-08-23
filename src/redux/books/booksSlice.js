@@ -8,20 +8,23 @@ const initialState = {
 };
 const appId = 'xEU2P3EW7ZDOC4O4U6Sh';
 const url = `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${appId}`;
-export const addBookToServer = createAsyncThunk('books/addToServer', async (obj) => {
+export const addBookToServer = createAsyncThunk('books/addToServer', async (obj, { rejectWithValue }) => {
   try {
-    const response = await axios.post(`${url}/books`, obj);
-    const { data } = response;
-    return data;
+    await axios.post(`${url}/books`, obj);
+    return obj;
   } catch (error) {
-    return error;
+    return rejectWithValue(error.message);
   }
 });
 export const getBookFromServer = createAsyncThunk('books/getFromServer', async () => {
   try {
     const response = await axios.get(`${url}/books`);
     const { data } = response;
-    return data;
+    return Object.entries(data).map((book) => {
+      const [id] = book;
+      book[1][0].item_id = id;
+      return book[1][0];
+    });
   } catch (error) {
     return error;
   }
@@ -29,14 +32,13 @@ export const getBookFromServer = createAsyncThunk('books/getFromServer', async (
 export const deleteBookFromServer = createAsyncThunk('books/deleteFromServer', async (obj) => {
   const { item_id: id } = obj;
   try {
-    const response = await axios.delete(`${url}/books/${id}`, {
+    await axios.delete(`${url}/books/${id}`, {
       data: obj,
       headers: {
         'Content-Type': 'application/json',
       },
     });
-    const { data } = response;
-    return data;
+    return id;
   } catch (error) {
     return error;
   }
@@ -51,15 +53,18 @@ const booksSlice = createSlice({
     });
     builder.addCase(getBookFromServer.fulfilled, (state, action) => {
       state.loading = false;
-      state.books = Object.entries(action.payload).map((book) => {
-        const [id] = book;
-        book[1][0].item_id = id;
-        return book[1][0];
-      });
+      state.books = action.payload;
     });
     builder.addCase(getBookFromServer.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message;
+      state.error = action.payload;
+    });
+    builder.addCase(addBookToServer.fulfilled, (state, action) => {
+      state.books.push(action.payload);
+    });
+    builder.addCase(deleteBookFromServer.fulfilled, (state, action) => {
+      const id = action.payload;
+      state.books = state.books.filter((book) => book.item_id !== id);
     });
   },
 });
