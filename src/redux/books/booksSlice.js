@@ -59,12 +59,28 @@ const booksSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     });
+    builder.addCase(addBookToServer.pending, (state) => {
+      state.loading = true;
+    });
     builder.addCase(addBookToServer.fulfilled, (state, action) => {
+      state.loading = false;
       state.books.push(action.payload);
+    });
+    builder.addCase(addBookToServer.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    });
+    builder.addCase(deleteBookFromServer.pending, (state) => {
+      state.loading = true;
     });
     builder.addCase(deleteBookFromServer.fulfilled, (state, action) => {
       const id = action.payload;
+      state.loading = false;
       state.books = state.books.filter((book) => book.item_id !== id);
+    });
+    builder.addCase(deleteBookFromServer.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
     });
   },
 });

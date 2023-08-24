@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectAllBooks, getBookFromServer } from '../redux/books/booksSlice';
 import SingleBook from './SingleBook';
+import Loading from './Loading';
+import Error from './Error';
 
 const BookList = () => {
   const dispatch = useDispatch();
@@ -12,14 +14,14 @@ const BookList = () => {
     dispatch(getBookFromServer());
   }, [dispatch]);
   if (loading) {
-    return <div>Loading ...</div>;
+    return <Loading />;
   }
   if (!Array.isArray(books) || error) {
-    return <div>An Error occur</div>;
+    return <Error />;
   }
   return (
-    <div>
-      <ul>
+    <div className="md:w-[90%] mx-auto font-robotoSlob">
+      <ul className="flex flex-col gap-4">
         {
          books?.map((book) => {
            const {

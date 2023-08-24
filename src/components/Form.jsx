@@ -31,12 +31,12 @@ const Form = () => {
   };
 
   return (
-    <form action="">
-      <h2>ADD NEW BOOK</h2>
-      <fieldset>
-        <input type="text" name="title" placeholder="Book title" className=" border" value={formData.title} onChange={handleInputChange} />
-        <input type="text" name="author" placeholder="author" className=" border" value={formData.author} onChange={handleInputChange} />
-        <button type="submit" className=" bg-blue-500 p-2 text-white" onClick={handleSubmit}>ADD BOOK</button>
+    <form action="" className=" border-t mt-8 py-3 md:w-[90%] mx-auto">
+      <h2 className=" font-bold text-gray-500 py-3">ADD NEW BOOK</h2>
+      <fieldset className="grid md:grid-cols-[3fr,1fr,.5fr] gap-2">
+        <input type="text" name="title" placeholder="Book title" className=" border rounded-md px-4 py-2" value={formData.title} onChange={handleInputChange} />
+        <input type="text" name="author" placeholder="author" className=" border rounded-md px-4 py-2" value={formData.author} onChange={handleInputChange} />
+        <button type="submit" className=" bg-[rgb(2,144,255)] p-2 text-white rounded-md mt-4 md:mt-0" onClick={handleSubmit}>ADD BOOK</button>
       </fieldset>
     </form>
   );
