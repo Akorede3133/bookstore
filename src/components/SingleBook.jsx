@@ -7,10 +7,10 @@ const SingleBook = ({
 }) => {
   const dispatch = useDispatch();
   return (
-    <li className="flex p-5 md:pr-20 gap-4 md:gap-0 flex-col md:flex-row justify-between md:items-center shadow bg-white md:p-10 border border-slate-200 rounded-md">
+    <li className="flex font-[200] p-5 md:pr-20 gap-4 md:gap-0 flex-col md:flex-row justify-between md:items-center shadow bg-white md:p-10 border border-slate-200 rounded-md">
       <article>
         <p className=" text-slate-600 text-sm font-bold capitalize ">{category}</p>
-        <h2 className=" font-bold text-3xl">{title}</h2>
+        <h2 className="font-bold font-robotoSlob text-black text-2xl tracking-tight">{title}</h2>
         <p className=" text-sm text-[rgb(67,134,191)]">{author}</p>
         <ul className=" flex gap-2 mt-4 text-[rgb(67,134,191)]">
           <li className="pr-3">
@@ -36,7 +36,7 @@ const SingleBook = ({
         <div>
           <h3 className=" text-gray-400">CURRENT CHAPTER</h3>
           <p>Chapter 17</p>
-          <button type="button" className="bg-[rgb(2,144,255)] px-2 py-1 mt-4 text-white rounded">UPDATE PROGRESS</button>
+          <button type="button" className="bg-[rgb(2,144,255)] px-3 md:px-7 py-2 mt-4 text-white rounded">UPDATE PROGRESS</button>
         </div>
       </article>
     </li>
