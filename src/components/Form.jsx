@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addBook } from '../redux/books/booksSlice';
+import { nanoid } from '@reduxjs/toolkit';
+import { addBookToServer } from '../redux/books/booksSlice';
 
 const Form = () => {
   const [formData, setFormData] = useState({
@@ -19,7 +20,9 @@ const Form = () => {
     e.preventDefault();
     const { title, author } = formData;
     if (title && author) {
-      dispatch(addBook(title, author));
+      dispatch(addBookToServer({
+        item_id: nanoid(), title, author, category: 'fiction',
+      }));
       setFormData({
         title: '',
         author: '',

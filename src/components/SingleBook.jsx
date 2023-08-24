@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
-import { removeBook } from '../redux/books/booksSlice';
+import { deleteBookFromServer } from '../redux/books/booksSlice';
 
 const SingleBook = ({
   title, author, id, category,
@@ -17,7 +17,7 @@ const SingleBook = ({
             <button type="button">Comments</button>
           </li>
           <li>
-            <button type="button" onClick={() => dispatch(removeBook(id))}>Remove</button>
+            <button type="button" onClick={() => dispatch(deleteBookFromServer({ item_id: id }))}>Remove</button>
           </li>
           <li>
             <button type="button">Edit</button>
